@@ -2,15 +2,15 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../Home/HomeScreen';
-import SelectedPokemon from '../Home/components/SelectedPokemon';
 import ScreenSplash from '../screenSplash/ScreenSplash';
+import SelectedPokemon from '../selectedPokemon/SelectedPokemon';
 
 const Stack = createNativeStackNavigator();
 
 const HomeStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ScreenSplash">
+      <Stack.Navigator initialRouteName="ScreenSplash" headerStyle={{}}>
         <Stack.Screen
           name="ScreenSplash"
           component={ScreenSplash}
@@ -21,7 +21,11 @@ const HomeStack = () => {
           component={HomeScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="SelectedPokemon" component={SelectedPokemon} />
+        <Stack.Screen
+          name="SelectedPokemon"
+          component={SelectedPokemon}
+          options={({route}) => ({title: route.params.name})}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

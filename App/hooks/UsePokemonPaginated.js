@@ -4,7 +4,9 @@ import {pokemonApi} from '../api/pokemonApi';
 export const usePokemonPaginated = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [simplePokemonList, setSimplePokemonList] = useState([]);
-  const nextPageUrl = useRef('https://pokeapi.co/api/v2/pokemon?limit=5');
+  const nextPageUrl = useRef(
+    'https://pokeapi.co/api/v2/pokemon?limit=5&offset=5',
+  );
 
   const loadPokemons = async () => {
     setIsLoading(true);

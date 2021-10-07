@@ -1,29 +1,19 @@
 import React from 'react';
-import {Image, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 
 const Card = ({item}) => {
-  const {width} = useWindowDimensions();
-  const widthX = width;
   const {id, picture, name} = item;
   return (
     <View style={styles.card}>
-      <View style={styles.imageBox}>
-        <Image
-          source={{uri: picture}}
-          style={{
-            width: '100%',
-            height: 200,
-          }}
-          resizeMode="contain"
-        />
-      </View>
+      <Image
+        source={{uri: picture}}
+        style={styles.image}
+        resizeMode="contain"
+      />
 
       <View style={styles.textBox}>
         <Text style={styles.name}>{name}</Text>
-        <Image
-          source={require('../../../../Assets/icons/arrow.png')}
-          resizeMode="contain"
-        />
+        <Text style={styles.name}>#{id}</Text>
       </View>
     </View>
   );
@@ -39,21 +29,22 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 20,
     alignSelf: 'center',
+    justifyContent: 'center',
+    elevation: 6,
   },
-  imageBox: {
-    flex: 7,
+  image: {
+    width: 250,
+    height: 350,
+    position: 'absolute',
+    right: -40,
   },
   textBox: {
-    flex: 3,
-    backgroundColor: 'white',
     borderRadius: 20,
     paddingHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
   name: {
     fontSize: 25,
-    color: '#0C0C0C',
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

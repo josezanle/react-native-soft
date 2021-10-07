@@ -11,7 +11,7 @@ const ScreenSplash = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('HomeScreen');
-    }, 5000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
   return (
